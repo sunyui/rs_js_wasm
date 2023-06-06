@@ -1,0 +1,22 @@
+{
+  "name": "rs_wasm",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "rimraf dist ./rs_wasm/pkg && webpack",
+    "start": "rimraf dist ./rs_wasm/pkg && webpack-dev-server",
+    "test": "cargo test --manifest-path ./rs_wasm/Cargo.toml && wasm-pack test --dir ./rs_wasm --headless"
+  },
+  "devDependencies": {
+    "@wasm-tool/wasm-pack-plugin": "^1.6.0",
+    "html-webpack-plugin": "^5.5.0",
+    "rimraf": "^3.0.2",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.11.1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
