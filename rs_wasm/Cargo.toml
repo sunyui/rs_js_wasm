@@ -1,0 +1,49 @@
+[package]
+categories = ["wasm"]
+description = ""
+edition = "2021"
+name = "rs_wasm"
+version = "0.1.0"
+
+[lib]
+# 一个动态的系统库将会产生，类似于C共享库。当编译一个从其它语言加载调用的动态库时这属性将会被使用
+crate-type = ["cdylib"]
+
+[features]
+
+[dependencies]
+# 用于将实体从 Rust 绑定到 JavaScript，或反过来。
+# 提供了 JS 和 WASM 之间的通道，用来传递对象、字符串、数组这些数据类型
+wasm-bindgen = "0.2.83"
+wee_alloc = {version = "0.4.5", optional = true}
+
+# 序列化
+serde = { version = "1.0", features = ["derive"] }
+serde-wasm-bindgen = "0.4"
+
+# web-sys 可以和 JS 的 API 进行交互，比如 DOM
+[dependencies.web-sys]
+features = ["console"]
+version = "0.3.60"
+
+[dev-dependencies]
+# 用于所有JS环境 (如Node.js和浏览器)中的 JS 全局对象和函数的绑定
+js-sys = "0.3.60"
+
+# 0 – 不优化
+# 1 – 基础优化
+# 2 – 更多优化
+# 3 – 全量优化，关注性能时建议开启此项
+# s – 优化二进制大小
+# z – 优化二进制大小同时关闭循环向量，关注体积时建议开启此项
+[profile.dev]
+debug = true
+# link time optimize LLVM 的链接时间优化，false 时只会优化当前包，true/fat会跨依赖寻找关系图里的所有包进行优化
+# 其它选项还有 off-关闭优化，thin是fat的更快版本
+lto = true
+opt-level = 'z'
+
+[profile.release]
+debug = false
+lto = true
+opt-level = 'z'
