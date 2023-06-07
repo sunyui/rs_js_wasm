@@ -12,11 +12,12 @@ crate-type = ["cdylib"]
 [features]
 
 [dependencies]
-# 用于将实体从 Rust 绑定到 JavaScript，或反过来。
 # 提供了 JS 和 WASM 之间的通道，用来传递对象、字符串、数组这些数据类型
 wasm-bindgen = "0.2.83"
+# 异步逻辑通道 async/await
+wasm-bindgen-futures = "0.4"
+# 堆分配器，减少 WebAssembly 模块的体积
 wee_alloc = {version = "0.4.5", optional = true}
-
 # 序列化
 serde = { version = "1.0", features = ["derive"] }
 serde-wasm-bindgen = "0.4"
