@@ -6,7 +6,9 @@
   "scripts": {
     "build": "rimraf dist pkg && webpack",
     "test": "cargo test --manifest-path ./src/Cargo.toml && wasm-pack test src --node --headless",
-    "dev": "rimraf dist pkg && webpack-dev-server"
+    "dev": "rimraf dist pkg && webpack-dev-server",
+    "twiggy": "twiggy top -n 10 ./pkg/index_bg.wasm"
+
   },
   "devDependencies": {
     "@wasm-tool/wasm-pack-plugin": "^1.6.0",
