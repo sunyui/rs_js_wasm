@@ -2,24 +2,25 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const WasmPackPlugin = require("@wasm-tool/wasm-pack-plugin");
 
-const dist = path.resolve(__dirname, "dist");
+const dev_dir = path.resolve(__dirname, "test");
 
 module.exports = {
   mode: "development",
   entry: {
-    index: "./js/index.js",
+    index: `${dev_dir}/js/index.js`,
   },
   output: {
-    path: dist,
+    path: `${dev_dir}/dist`,
     filename: "[name].js",
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, "./index.html"),
+      template: `${dev_dir}/index.html`,
       inject: false,
     }),
     new WasmPackPlugin({
-      crateDirectory: path.resolve(__dirname , "rs_wasm"),
+      outDir: path.resolve(__dirname , "pkg"),
+      crateDirectory: path.resolve(__dirname , "src"),
     }),
   ],
   experiments: {
@@ -28,4 +29,8 @@ module.exports = {
   resolve: {
     extensions: [".ts", ".js"],
   },
+  devServer: {
+      open: true
+  }
 };
+

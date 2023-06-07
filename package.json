@@ -1,12 +1,13 @@
 {
   "name": "rs_wasm",
   "version": "0.1.0",
-  "description": "",
+  "description": "a scaffold for building the rust-wasm-module",
   "main": "index.js",
   "scripts": {
-    "build": "rimraf dist ./rs_wasm/pkg && webpack",
-    "start": "rimraf dist ./rs_wasm/pkg && webpack-dev-server",
-    "test": "cargo test --manifest-path ./rs_wasm/Cargo.toml && wasm-pack test --dir ./rs_wasm --headless"
+    "build": "rimraf dist pkg && webpack",
+    "start": "rimraf dist pkg && webpack-dev-server",
+    "test": "cargo test --manifest-path ./rs_wasm/Cargo.toml && wasm-pack test --dir ./rs_wasm --headless",
+    "dev": "rimraf dist pkg && webpack-dev-server"
   },
   "devDependencies": {
     "@wasm-tool/wasm-pack-plugin": "^1.6.0",
@@ -16,7 +17,16 @@
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.11.1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "keywords": [
+    "rust",
+    "wasm",
+    "node_module"
+  ],
+  "author": "sunyui",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-syntax-highlighter": "^15.5.0"
+  }
 }

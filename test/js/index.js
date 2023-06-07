@@ -1,5 +1,5 @@
 async function main() {
-  const module = await import('../rs_wasm/pkg/index');
+  const module = await import('../../pkg/index');
   module.hello_world();
   num = module.fib(30)
   console.log(num)
