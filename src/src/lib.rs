@@ -2,7 +2,8 @@ use wasm_bindgen::prelude::*;
 use web_sys::console;
 use std::collections::HashMap;
 use serde::{Deserialize, Serialize};
-
+use wasm_bindgen_futures::JsFuture;
+use js_sys;
 
 #[wasm_bindgen]
 pub fn hello_world() {
@@ -87,4 +88,16 @@ pub fn test_point() -> Point {
     let p1 = Point::new(6, 3);
     p.add(p1);
     p
+}
+
+// async/await
+#[wasm_bindgen]
+pub async fn greet_async(name: &str) -> Result<String, JsValue> {
+    let result = format!("Hello, {}!", name);
+    // 模拟一个异步操作
+    let promise = js_sys::Promise::resolve(&JsValue::from(result.clone()));
+    let js_future = JsFuture::from(promise);
+    let value = js_future.await?;
+    let result = value.as_string().ok_or_else(|| JsValue::from_str("Invalid response"))?;
+    Ok(result)
 }

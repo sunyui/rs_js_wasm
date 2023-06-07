@@ -10,6 +10,9 @@ async function main() {
   console.log(obj)
 
   console.log(module.test_point())
+
+  res = await module.greet_async('test');
+  console.log(res)
 }
 
 main();
