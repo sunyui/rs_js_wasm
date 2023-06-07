@@ -3,3 +3,5 @@ Cargo.lock
 dist
 node_modules/
 src/*/*tmp*
+
+.DS_Store
