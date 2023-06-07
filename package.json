@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "build": "rimraf dist pkg && webpack",
-    "start": "rimraf dist pkg && webpack-dev-server",
     "test": "cargo test --manifest-path ./rs_wasm/Cargo.toml && wasm-pack test --dir ./rs_wasm --headless",
     "dev": "rimraf dist pkg && webpack-dev-server"
   },

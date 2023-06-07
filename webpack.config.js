@@ -20,7 +20,7 @@ module.exports = {
     }),
     new WasmPackPlugin({
       outDir: path.resolve(__dirname , "pkg"),
-      crateDirectory: path.resolve(__dirname , "src"),
+      crateDirectory: path.resolve(__dirname , "src")
     }),
   ],
   experiments: {
